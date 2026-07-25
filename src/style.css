@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.view {
+    background: linear-gradient(142deg,rgba(252, 203, 230, 1) 17%, rgba(252, 208, 232, 1) 40%, rgba(251, 212, 234, 1) 59%, rgba(251, 216, 236, 1) 77%);
+}
+
+@theme {
+  --font-sans: 'Vazirmatn', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
