@@ -10,8 +10,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        tstar: resolve(__dirname, 'tstar.html'),
-        shselin: resolve(__dirname, 'sh-selin.html'),
+        p1: resolve(__dirname, 'p1.html'),
+        p2: resolve(__dirname, 'p2.html'),
+        p3: resolve(__dirname, 'p3.html'),
       },
     },
   },

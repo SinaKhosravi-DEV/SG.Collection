@@ -29,3 +29,18 @@ html {
 .acc-item.open .acc-icon {
   transform: rotate(180deg);
 }
+
+ @keyframes heartbeat-glow {
+    0%   { box-shadow: 0 0 4px 1px rgba(217,83,158,0.5),  0 0 8px 2px rgba(217,83,158,0.25); }
+    14%  { box-shadow: 0 0 10px 3px rgba(217,83,158,0.9),  0 0 18px 5px rgba(217,83,158,0.5); }
+    28%  { box-shadow: 0 0 5px 1px rgba(217,83,158,0.55), 0 0 10px 3px rgba(217,83,158,0.3); }
+    42%  { box-shadow: 0 0 12px 4px rgba(217,83,158,1),   0 0 22px 6px rgba(217,83,158,0.6); }
+    60%  { box-shadow: 0 0 4px 1px rgba(217,83,158,0.5),  0 0 8px 2px rgba(217,83,158,0.25); }
+    100% { box-shadow: 0 0 4px 1px rgba(217,83,158,0.5),  0 0 8px 2px rgba(217,83,158,0.25); }
+  }
+  .heartbeat-glow-btn {
+    animation: heartbeat-glow 1.2s ease-in-out infinite;
+  }
+  .heartbeat-glow-btn:hover {
+    background: linear-gradient(to bottom, #ec93c4, #e067a8) !important;
+  }
