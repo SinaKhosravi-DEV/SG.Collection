@@ -11,3 +11,21 @@
 html {
   scroll-behavior: smooth;
 }
+
+.acc-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.acc-item.open .acc-content {
+  max-height: 500px;
+}
+
+.acc-icon {
+  transition: transform 0.3s ease;
+}
+
+.acc-item.open .acc-icon {
+  transform: rotate(180deg);
+}
