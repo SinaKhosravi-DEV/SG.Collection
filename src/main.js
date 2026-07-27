@@ -1,22 +1,35 @@
-function changeImage(el) {
-  const mainImage = document.getElementById('mainImage');
-  if (!mainImage) return;
+document.addEventListener("DOMContentLoaded", () => {
+  const mainImage = document.getElementById("mainImage");
+  const thumbs = document.querySelectorAll(".thumb");
 
-  mainImage.classList.add('opacity-0');
-
-  setTimeout(() => {
-    mainImage.src = el.dataset.full + '?v=' + Date.now();
-    mainImage.classList.remove('opacity-0');
-  }, 150);
-
-  document.querySelectorAll('.thumb').forEach(t => {
-    t.classList.remove('border-2', 'border-[#D9539E]', 'opacity-100');
-    t.classList.add('border', 'border-[#D9539E]/30', 'opacity-60');
+  // اضافه کردن رویداد کلیک و تاچ برای موبایل
+  thumbs.forEach((thumb) => {
+    thumb.addEventListener("click", () => changeImage(thumb));
+    thumb.addEventListener("touchstart", () => changeImage(thumb));
   });
 
-  el.classList.remove('border', 'border-[#D9539E]/30', 'opacity-60');
-  el.classList.add('border-2', 'border-[#D9539E]', 'opacity-100');
-}
+  function changeImage(el) {
+    if (!mainImage) return;
+
+    // افکت محو شدن
+    mainImage.classList.add("opacity-0");
+
+    setTimeout(() => {
+      mainImage.src = el.dataset.full + "?v=" + Date.now(); // جلوگیری از کش
+      mainImage.classList.remove("opacity-0");
+    }, 150);
+
+    // حذف استایل از همه‌ی تامبنیل‌ها
+    thumbs.forEach((t) => {
+      t.classList.remove("border-2", "border-[#D9539E]", "opacity-100");
+      t.classList.add("border", "border-[#D9539E]/30", "opacity-60");
+    });
+
+    // اضافه کردن استایل فعال به تامبنیل انتخاب‌شده
+    el.classList.remove("border", "border-[#D9539E]/30", "opacity-60");
+    el.classList.add("border-2", "border-[#D9539E]", "opacity-100");
+  }
+});
 
 
 const colorName = document.getElementById('colorName');
