@@ -55,25 +55,28 @@ const sizeGuideBtn = document.getElementById('sizeGuideBtn');
 const sizeGuideModal = document.getElementById('sizeGuideModal');
 const closeSizeGuide = document.getElementById('closeSizeGuide');
 
-// باز کردن مودال
-sizeGuideBtn.addEventListener('click', () => {
-  sizeGuideModal.classList.remove('hidden');
-  sizeGuideModal.classList.add('flex');
-});
+// این المان‌ها فقط توی صفحه محصول هستن، پس چک می‌کنیم که صفحه اصلی خطا نده
+if (sizeGuideBtn && sizeGuideModal && closeSizeGuide) {
+  // باز کردن مودال
+  sizeGuideBtn.addEventListener('click', () => {
+    sizeGuideModal.classList.remove('hidden');
+    sizeGuideModal.classList.add('flex');
+  });
 
-// بستن با دکمه ضربدر
-closeSizeGuide.addEventListener('click', () => {
-  sizeGuideModal.classList.add('hidden');
-  sizeGuideModal.classList.remove('flex');
-});
-
-// بستن با کلیک روی پس‌زمینه تیره (اختیاری ولی تجربه کاربری بهتر)
-sizeGuideModal.addEventListener('click', (e) => {
-  if (e.target === sizeGuideModal) {
+  // بستن با دکمه ضربدر
+  closeSizeGuide.addEventListener('click', () => {
     sizeGuideModal.classList.add('hidden');
     sizeGuideModal.classList.remove('flex');
-  }
-});
+  });
+
+  // بستن با کلیک روی پس‌زمینه تیره (اختیاری ولی تجربه کاربری بهتر)
+  sizeGuideModal.addEventListener('click', (e) => {
+    if (e.target === sizeGuideModal) {
+      sizeGuideModal.classList.add('hidden');
+      sizeGuideModal.classList.remove('flex');
+    }
+  });
+}
 
 document.querySelectorAll('.acc-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -81,3 +84,18 @@ document.querySelectorAll('.acc-toggle').forEach(btn => {
       item.classList.toggle('open');
     });
   });
+
+// انیمیشن ظاهر شدن بخش‌ها موقع اسکرول
+const revealEls = document.querySelectorAll('.reveal');
+if (revealEls.length) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealEls.forEach((el) => revealObserver.observe(el));
+}
